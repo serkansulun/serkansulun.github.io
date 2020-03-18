@@ -306,6 +306,13 @@ section {
   margin: 1rem 0 1rem 0;
 }
 
+.link
+{
+   color:white;
+   text-decoration: none; 
+   background-color: none;
+}
+
 /* Print */
 @media print {
   body {
@@ -650,10 +657,48 @@ section {
 
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: rgb(121, 121, 121);
+}
+
+
+
 		</style>
 	</head>
 	<body>
-		<p align="center">
+		
+		<ul>
+			
+			<li>
+				<a href="/" style="color:white;text-decoration: none">Home</a>
+			</li>
+			<li>
+				<a href="/attachments/resume.pdf" style="color:white;text-decoration: none">Printer friendly pdf</a>
+			</li>
+			
+		  </ul>
+		</p>
+		<!-- <p align="center">
 			<a href="/">
 				<span style="color:blue"> 
 					Home
@@ -665,13 +710,15 @@ section {
 					Printer friendly pdf
 				</span>
 			</a>
-		</p>  
+		</p>   -->
 		<div class="container">
 			<div class="row" id="resume">
 				<div class="col-xs-4 sidebar">
 					    <section class="section-basic">
 					            <div class="avatar">
-					                <img src="images/inesc.jpg" alt="Serkan Sulun" class="img-circle">
+									<a href="/images/inesc.jpg">
+										<img src="images/inesc.jpg" alt="Serkan Sulun" class="img-circle">
+									</a>
 					            </div>
 					    </section>
 					    <section class="section-contact">
