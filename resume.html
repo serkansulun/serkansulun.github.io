@@ -53,6 +53,34 @@ section {
   padding: 0.4rem 0.45rem;
 }
 
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333438;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #E5DED4;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
 /* Sidebar */
 .sidebar {
   padding: 2rem;
@@ -653,13 +681,10 @@ section {
 		</style>
 	</head>
 	<body>
-		<p align="center">
-			<a href="attachments/resume.pdf">
-				<span style="color:blue;text-decoration:underline"> 
-					Printer friendly pdf
-				</span>
-			</a>
-		</p>  
+		<div class="topnav">
+			<a href="/">Home</a>
+			<a href="/attachments/resume.pdf">Printer friendly PDF</a>
+		  </div> 
 		<div class="container">
 			<div class="row" id="resume">
 				<div class="col-xs-4 sidebar">
@@ -1150,7 +1175,7 @@ section {
 								<div class="title">
 									Erasmus+ Exchange Grant
 									<span class="awarder">
-										| EU Education, Audiovisual and Culture Executive Agency
+										| European Commission
 									</span>
 								</div>
 							</li>
@@ -1158,7 +1183,7 @@ section {
 								<div class="title">
 									Erasmus+ Internship Grant
 									<span class="awarder">
-										| EU Education, Audiovisual and Culture Executive Agency
+										| European Commission
 									</span>
 								</div>
 							</li>
