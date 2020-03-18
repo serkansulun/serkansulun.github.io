@@ -115,8 +115,12 @@ section {
   margin-bottom: 3rem;
 }
 
-.section-education .studyTitle {
+.section-education .studyType {
   text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.section-education .studyTitle {
   font-weight: bold;
   font-size: 1.3rem;
 }
@@ -336,6 +340,9 @@ section {
 
 /* Print */
 @media print {
+	a[href]:after {
+    content: none !important;
+  }
   body {
     font: 10px Arial, Helvetica, sans-serif;
     line-height: 1.4;
@@ -404,7 +411,7 @@ section {
   }
 
   .sidebar h2.title span {
-    color: #ffffff !important;
+    color: #000000 !important;
 }
 
   .avatar {
@@ -418,27 +425,33 @@ section {
 
   .section-education .item {
     margin-bottom: 3rem;
-		color: #ffffff !important;
+		color: #000000 !important;
   }
 
-  .section-education .studyTitle span{
+  .section-education .studyType{
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 1.1rem;
-		color: #ffffff !important;
+    font-size: 1.5rem;
+		color: #000000 !important;
   }
 
-  .section-education .studyTitle span.badge{
+  .section-education .studyTitle{
+    font-weight: bold;
+    font-size: 1.3rem;
+		color: #000000 !important;
+  }
+
+  .section-education .gpa span{
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 1.0rem;
-		color: #ffffff !important;
+    font-size: 1rem;
+		color: #000000 !important;
     background: #939393 !important;
   }
 
   .section-education .courses {
     font-size: 1.1rem;
-		color: #ffffff !important;
+		color: #000000 !important;
   }
 
   .section-education ul.courses {
@@ -449,22 +462,22 @@ section {
 
   .section-education .ul.courses li {
     margin:0;
-		color: #ffffff !important;
+		color: #000000 !important;
   }
 
   .section-education .institution {
     font-size: 1.0rem;
-		color: #ffffff !important;
+		color: #000000 !important;
   }
 
   .section-education .date span{
     font-size: 1.0rem;
-		color: #ffffff !important;
+		color: #000000 !important;
   }
 
   .sidebar a:link, .sidebar a:hover, .sidebar a:visited {
     text-decoration: none;
-		color: #ffffff !important;
+		color: #000000 !important;
   }
 
   /* Content */
@@ -485,7 +498,7 @@ section {
   }
 
   .content h2 {
-    color: #6D6D6D !important;
+    color: rgb(0, 0, 0) !important;
     text-transform: uppercase;
     text-align: left;
     font-size: 1.2rem;
@@ -505,7 +518,7 @@ section {
   }
 
   .section-name h2 {
-    color: #6D6D6D !important;
+    color: rgb(0, 0, 0) !important;
     text-transform: uppercase;
     text-align: center;
     font-size: 1.2rem;
@@ -621,7 +634,7 @@ section {
   }
 
   .section-skills .item .name {
-    color: #ffffff !important;
+    color: #000000 !important;
   }
 
 	.section-skills .item .keywords .span {
@@ -656,7 +669,8 @@ section {
 
   .section-contact ul.contact li {
     margin: 0.5rem 0 0.5rem 0;
-		color: #ffffff !important;
+		color: #000000 !important;
+		font-size: 1.5rem;
   }
 
   .section-contact ul.profiles {
@@ -690,7 +704,7 @@ section {
 				<div class="col-xs-4 sidebar">
 					    <section class="section-basic">
 					            <div class="avatar">
-									<a href="images/inesc.jpg">
+									<a href="images/inesc.jpg" media="print" type="text/css">
 					               		<img src="images/inesc.jpg" alt="Serkan Sulun" class="img-circle">
 									</a>
 								</div>
@@ -719,14 +733,14 @@ section {
 						    <span class="">Education</span>
 						</h2>
 						<div class="item">
-							<div class="studyTitle">
-								<span class="studyType">
-									Doctorate in
-								</span>
-								<span class="area">
+							
+								<div class="studyType">
+									Doctorate
+								</div>
+								<div class="studyTitle">
 									Electrical and Computer Engineering
-								</span>
-							</div>
+								</div>
+							
 							<div class="institution">
 								University of Porto
 							</div>
@@ -740,17 +754,15 @@ section {
 							</div>
 						</div>
 						<div class="item">
-							<div class="studyTitle">
-								<span class="studyType">
-									Masters in
-								</span>
-								<span class="area">
+							
+								<div class="studyType">
+									Masters
+								</div>
+								<div class="studyTitle">
 									Electrical and Electronics Engineering
-								</span>
-								<span class="gpa">
-									<span class="badge"> GPA: 3.81 </span>
-								</span>
-							</div>
+								</div>
+								
+							
 							<div class="institution">
 								Koc University
 							</div>
@@ -762,18 +774,20 @@ section {
 									- 2018
 								</span>
 							</div>
+							<div class="gpa">
+								<span class="badge"> GPA: 3.81 </span>
+							</div>
 						</div>
 						<div class="item">
-							<div class="studyTitle">
-								<span class="studyType">
-									Bachelors in
-								</span>
-								<span class="area">
+							<div>
+								
+								<div class="studyType">
+									Bachelors
+								</div>
+								<div class="studyTitle">
 									Electronics Engineering
-								</span>
-								<span class="gpa">
-									<span class="badge"> GPA: 3.86 </span>
-								</span>
+								</div>
+							
 							</div>
 							<div class="institution">
 								Sabanci University
@@ -785,6 +799,9 @@ section {
 								<span class="endDate">
 									- 2014
 								</span>
+							</div>
+							<div class="gpa">
+								<span class="badge"> GPA: 3.86 </span>
 							</div>
 						</div>
 					</section>
