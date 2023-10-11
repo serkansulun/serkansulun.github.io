@@ -4,7 +4,7 @@ title: Our paper "Emotion4MIDI&#58; a Lyrics-based Emotion-Labeled Symbolic Musi
 style: mid
 ---
 
-Our paper "Emotion4MIDI: a Lyrics-based Emotion-Labeled Symbolic Music Dataset" has been accepted to 2023 EPIA Conference on Artificial Intelligence.
+Our paper "Emotion4MIDI: a Lyrics-based Emotion-Labeled Symbolic Music Dataset" has been accepted to 2023 EPIA Conference on Artificial Intelligence (EPIA 2023), which took place in the beautiful Azores Islands in Portugal.
 
 [Paper](https://arxiv.org/abs/2307.14783)
 
@@ -21,7 +21,7 @@ Also at EPIA 2023, I gave a lightning talk on our previous paper on [symbolic mu
 ![](/images/epia/clone.jpg)
 <figcaption style="text-align: center; font-style: italic; font-size: smaller; margin-top: -20px;">Unfortunately I forgot to ask for the consent of the presenter, so her face can't be shown.</figcaption>
 
-I also would like to thank the organizers of EPIA 2023 for the prize money, which I've already spent on swimming with the sharks in the Azores:
+I also would like to thank the organizers of EPIA 2023 for the prize money, which I've already spent on swimming with the sharks in Azores:
 
 ![](/images/epia/shark.jpg)
 <!-- ![](/images/epia/shark1.jpg) -->
