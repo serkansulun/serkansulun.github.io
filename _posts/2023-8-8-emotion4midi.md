@@ -1,14 +1,23 @@
 ---
 layout: post
-title: Our paper "Emotion4MIDI&#58; a Lyrics-based Emotion-Labeled Symbolic Music Dataset"
+title: Emotion4MIDI&#58; a Lyrics-based Emotion-Labeled Symbolic Music Dataset
 style: mid
 ---
 
 Our paper "Emotion4MIDI: a Lyrics-based Emotion-Labeled Symbolic Music Dataset" has been accepted to 2023 EPIA Conference on Artificial Intelligence (EPIA 2023), which took place in the beautiful Azores Islands in Portugal.
 
-[Paper](https://arxiv.org/abs/2307.14783)
+The paper is available on [Springer Link](https://link.springer.com/chapter/10.1007/978-3-031-49011-8_7) and on [ArXiv](https://arxiv.org/abs/2307.14783). The source code is available on [Github](https://github.com/serkansulun/lyricsemotions). Our paper can be cited as:
 
-[Code and dataset](https://github.com/serkansulun/lyricsemotions)
+    @inproceedings{sulunEmotion4MIDILyricsBasedEmotionLabeled2023a,
+        title = {Emotion4MIDI: A Lyrics-Based Emotion-Labeled Symbolic Music Dataset},
+        booktitle = {Progress in Artificial Intelligence},
+        author = {Sulun, Serkan and Oliveira, Pedro and Viana, Paula},
+        editor = {Moniz, Nuno and Vale, Zita and Cascalho, Jos{\'e} and Silva, Catarina and Sebasti{\~a}o, Raquel},
+        year = {2023},
+        pages = {77--89},
+        publisher = {Springer Nature Switzerland},
+        address = {Cham},
+        isbn = {978-3-031-49011-8}}
 
 > **Abstract:**  We present a new large-scale emotion-labeled symbolic music dataset consisting of 12k MIDI songs. To create this dataset, we first trained emotion classification models on the GoEmotions dataset, achieving state-of-the-art results with a model half the size of the baseline. We then applied these models to lyrics from two large-scale MIDI datasets. Our dataset covers a wide range of fine-grained emotions, providing a valuable resource to explore the connection between music and emotions and, especially, to develop models that can generate music based on specific emotions. Our code for inference, trained models, and datasets are available online. 
 
