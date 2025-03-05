@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Video Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .video-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .video-container iframe {
+            width: 30%;
+            height: 300px;
+        }
+        .question {
+            margin-top: 20px;
+        }
+        .dropdown-container {
+            display: flex;
+            justify-content: space-around;
+        }
+        select {
+            padding: 5px;
+            margin: 5px;
+        }
+        .submit-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .submit-container input {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 200px;
+        }
+        .submit-container input:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Music Video Survey</h1>
+    <p>Please rank each method in terms of the questions below. The best method should be ranked 1, and the worst method should be ranked 3. Each method should have a different rank, meaning you should assign the ranks 1, 2, and 3 to each video.</p>
+    <br>
+    <h2>Video X</h2>
+    <div class="dropdown-container">
+        <label><b>Method A</b></label>
+        <label><b>Method B</b></label>
+        <label><b>Method C</b></label>
+    </div>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/O7jAhwbUfNE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/O7jAhwbUfNE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/O7jAhwbUfNE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <!-- Question 1 -->
+    <div class="question">
+        <p>Rank the overall richness and diversity of the musical melody, independent of the video content?</p>
+        <div class="dropdown-container">
+            <label>Method A: <select name="entry.1">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method B: <select name="entry.2">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method C: <select name="entry.3">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+        </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+        <p>Rank the overall quality of music, independent of the video content?</p>
+        <div class="dropdown-container">
+            <label>Method A: <select name="entry.4">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method B: <select name="entry.5">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method C: <select name="entry.6">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+        </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+        <p>Rank how well does the music match the video in terms of emotion?</p>
+        <div class="dropdown-container">
+            <label>Method A: <select name="entry.7">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method B: <select name="entry.8">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method C: <select name="entry.9">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+        </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+        <p>Rank how well is the music synchronized to the video, in terms of timing?</p>
+        <div class="dropdown-container">
+            <label>Method A: <select name="entry.10">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method B: <select name="entry.11">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method C: <select name="entry.12">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+        </div>
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <h2>Video Y</h2>
+    <div class="dropdown-container">
+        <label><b>Method A</b></label>
+        <label><b>Method B</b></label>
+        <label><b>Method C</b></label>
+    </div>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/O7jAhwbUfNE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/O7jAhwbUfNE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/O7jAhwbUfNE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <!-- Question 1 -->
+    <div class="question">
+        <p>Rank the overall richness and diversity of the musical melody, independent of the video content?</p>
+        <div class="dropdown-container">
+            <label>Method A: <select name="entry.13">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method B: <select name="entry.14">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method C: <select name="entry.15">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+        </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question">
+        <p>Rank the overall quality of music, independent of the video content?</p>
+        <div class="dropdown-container">
+            <label>Method A: <select name="entry.16">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method B: <select name="entry.17">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method C: <select name="entry.18">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+        </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question">
+        <p>Rank how well does the music match the video in terms of emotion?</p>
+        <div class="dropdown-container">
+            <label>Method A: <select name="entry.19">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method B: <select name="entry.20">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method C: <select name="entry.21">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+        </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question">
+        <p>Rank how well is the music synchronized to the video, in terms of timing?</p>
+        <div class="dropdown-container">
+            <label>Method A: <select name="entry.22">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method B: <select name="entry.23">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method C: <select name="entry.24">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+        </div>
+    </div>
+
+    <br>
+    <hr>
+    <hr>
+    <br>
+    <div class="question">
+        <p>Now consider both videos. Rank how different the music is between videos X and Y? The most different should be ranked first.</p>
+        <div class="dropdown-container">
+            <label>Method A: <select name="entry.25">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method B: <select name="entry.26">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+            <label>Method C: <select name="entry.27">
+                <option value=""></option>
+                <option value="1">Rank: 1</option>
+                <option value="2">Rank: 2</option>
+                <option value="3">Rank: 3</option>
+            </select></label>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="submit-container">
+        <form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

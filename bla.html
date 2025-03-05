@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+    <style>
+        :root {
+            --iframe-width: 250px;
+            --iframe-height: 150px;
+            --input-width: 50px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr) auto;
+            gap: 20px;
+        }
+        .video-container {
+            text-align: center;
+        }
+        .questions {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .row-question {
+            grid-column: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        input[type="number"] {
+            width: var(--input-width);
+            margin: 5px;
+            text-align: center;
+        }
+        iframe {
+            width: var(--iframe-width);
+            height: var(--iframe-height);
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Survey</h1>
+    <form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST">
+        <div class="grid-container">
+            <!-- Repeat iframe for each video container -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/O7jAhwbUfNE" frameborder="0" allowfullscreen></iframe>
+                <div class="questions">
+                    <label>Question 1: <input type="number" name="entry.q1_video1" min="1" max="7" required></label>
+                    <label>Question 2: <input type="number" name="entry.q2_video1" min="1" max="7" required></label>
+                    <label>Question 3: <input type="number" name="entry.q3_video1" min="1" max="7" required></label>
+                    <label>Question 4: <input type="number" name="entry.q4_video1" min="1" max="7" required></label>
+                    <label>Question 5: <input type="number" name="entry.q5_video1" min="1" max="7" required></label>
+                </div>
+            </div>
+            <!-- Repeat for other rows -->
+        </div>
+        <div style="margin-top: 20px; text-align: center;">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
