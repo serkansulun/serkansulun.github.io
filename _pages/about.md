@@ -2,33 +2,38 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Machine learning scientist
+nav: false
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: serkan.jpg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+  # more_info: >
+  #   <p>555 your office number</p>
+  #   <p>123 your address street</p>
+  #   <p>Your City, State 12345</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
 announcements:
-  enabled: true # includes a list of news items
+  enabled: false # includes a list of news items
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
   limit: 5 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  limit: # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+**2025 Update**: I am currently seeking postdoctoral opportunities and research collaborations. Feel free to reach out at name DOT surname AT inesctec DOT pt
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+I am a deep learning researcher with over a decade of experience, specializing in multimedia analysis and generation across various modalities, including video, image, audio, symbolic music, and text. During my PhD, I was awarded the prestigious la Caixa Doctoral Fellowship, the Doctoral Fellowship from the Portuguese Foundation for Science and Technology (FCT), and the Seed Projects Research Grant.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+For my PhD thesis, I created one of the only existing automatic soundtrack composer for arbitrary videos, achieving state-of-the-art results. Additionally, my video analysis models have set new benchmarks in datasets such as MovieNet and Ekman-6.
+
+For my Master’s, I developed a novel deep learning-based video codec that replaced the traditional motion compensation mechanism, surpassing the widely used x264 codec. Beyond research, I have over 10 years of teaching experience and am the sole programming lecturer at the University of Porto and Porto Católica Business School.
+
+Outside academia, I have a deep passion for sports and the arts. After completing the 42 km. Porto Marathon, I retired from running (no one noticed) and took up tennis. With five years of radio broadcasting and a year of sound engineering experience, I later transitioned to playing the drums. I am currently a member of the Santa Cecilia Music School Rock Band.
