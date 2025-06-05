@@ -72,345 +72,92 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/site-v2/blog/";
               },
-            },{id: "post-a-post-with-plotly-js",
+            },{id: "post-upcoming-concert-on-17-may",
         
-          title: "a post with plotly.js",
+          title: "Upcoming concert on 17 May",
         
-        description: "this is what included plotly.js code could look like",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2025/plotly/";
+            window.location.href = "/site-v2/blog/2025/concert/";
           
         },
-      },{id: "post-a-post-with-image-galleries",
+      },{id: "post-submitted-my-thesis",
         
-          title: "a post with image galleries",
+          title: "Submitted my thesis",
         
-        description: "this is what included image galleries could look like",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2024/photo-gallery/";
+            window.location.href = "/site-v2/blog/2025/thesis/";
           
         },
-      },{id: "post-a-post-with-tabs",
+      },{id: "post-presented-at-ieee-ism-in-tokyo",
         
-          title: "a post with tabs",
+          title: "Presented at IEEE ISM in Tokyo",
         
-        description: "this is what included tabs in a post could look like",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2024/tabs/";
+            window.location.href = "/site-v2/blog/2024/ism/";
           
         },
-      },{id: "post-a-post-with-typograms",
+      },{id: "post-completed-42-km-porto-marathon",
         
-          title: "a post with typograms",
+          title: "Completed 42 km. Porto Marathon",
         
-        description: "this is what included typograms code could look like",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2024/typograms/";
+            window.location.href = "/site-v2/blog/2023/marathon/";
           
         },
-      },{id: "post-a-post-that-can-be-cited",
+      },{id: "post-best-presentation-award-at-epia-2023",
         
-          title: "a post that can be cited",
+          title: "Best presentation award at EPIA 2023",
         
-        description: "this is what a post that can be cited looks like",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2024/post-citation/";
+            window.location.href = "/site-v2/blog/2023/emotion4midi/";
           
         },
-      },{id: "post-a-post-with-pseudo-code",
+      },{id: "post-tv-interview-on-sic-notícias",
         
-          title: "a post with pseudo code",
+          title: "TV Interview on SIC Notícias",
         
-        description: "this is what included pseudo code could look like",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2024/pseudocode/";
+            window.location.href = "/site-v2/blog/2022/sic/";
           
         },
-      },{id: "post-a-post-with-code-diff",
+      },{id: "post-newspaper-interview-in-quot-observador-quot",
         
-          title: "a post with code diff",
+          title: "Newspaper Interview in &quot;Observador&quot;",
         
-        description: "this is how you can display code diffs",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2024/code-diff/";
+            window.location.href = "/site-v2/blog/2022/observador/";
           
         },
-      },{id: "post-a-post-with-advanced-image-components",
+      },{id: "post-lecture-video-deep-learning-for-music-processing",
         
-          title: "a post with advanced image components",
+          title: "Lecture video - Deep learning for music processing",
         
-        description: "this is what advanced image components could look like",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2024/advanced-images/";
-          
-        },
-      },{id: "post-a-post-with-vega-lite",
-        
-          title: "a post with vega lite",
-        
-        description: "this is what included vega lite code could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2024/vega-lite/";
-          
-        },
-      },{id: "post-a-post-with-geojson",
-        
-          title: "a post with geojson",
-        
-        description: "this is what included geojson code could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2024/geojson-map/";
-          
-        },
-      },{id: "post-a-post-with-echarts",
-        
-          title: "a post with echarts",
-        
-        description: "this is what included echarts code could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2024/echarts/";
-          
-        },
-      },{id: "post-a-post-with-chart-js",
-        
-          title: "a post with chart.js",
-        
-        description: "this is what included chart.js code could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2024/chartjs/";
-          
-        },
-      },{id: "post-a-post-with-tikzjax",
-        
-          title: "a post with TikZJax",
-        
-        description: "this is what included TikZ code could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2023/tikzjax/";
-          
-        },
-      },{id: "post-a-post-with-bibliography",
-        
-          title: "a post with bibliography",
-        
-        description: "an example of a blog post with bibliography",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2023/post-bibliography/";
-          
-        },
-      },{id: "post-a-post-with-jupyter-notebook",
-        
-          title: "a post with jupyter notebook",
-        
-        description: "an example of a blog post with jupyter notebook",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2023/jupyter-notebook/";
-          
-        },
-      },{id: "post-a-post-with-custom-blockquotes",
-        
-          title: "a post with custom blockquotes",
-        
-        description: "an example of a blog post with custom blockquotes",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2023/custom-blockquotes/";
-          
-        },
-      },{id: "post-a-post-with-table-of-contents-on-a-sidebar",
-        
-          title: "a post with table of contents on a sidebar",
-        
-        description: "an example of a blog post with table of contents on a sidebar",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2023/sidebar-table-of-contents/";
-          
-        },
-      },{id: "post-a-post-with-audios",
-        
-          title: "a post with audios",
-        
-        description: "this is what included audios could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2023/audios/";
-          
-        },
-      },{id: "post-a-post-with-videos",
-        
-          title: "a post with videos",
-        
-        description: "this is what included videos could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2023/videos/";
-          
-        },
-      },{id: "post-displaying-beautiful-tables-with-bootstrap-tables",
-        
-          title: "displaying beautiful tables with Bootstrap Tables",
-        
-        description: "an example of how to use Bootstrap Tables",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2023/tables/";
-          
-        },
-      },{id: "post-a-post-with-table-of-contents",
-        
-          title: "a post with table of contents",
-        
-        description: "an example of a blog post with table of contents",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2023/table-of-contents/";
-          
-        },
-      },{id: "post-a-post-with-giscus-comments",
-        
-          title: "a post with giscus comments",
-        
-        description: "an example of a blog post with giscus comments",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2022/giscus-comments/";
-          
-        },
-      },{id: "post-a-post-with-redirect",
-        
-          title: "a post with redirect",
-        
-        description: "you can also redirect to assets like pdf",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/assets/pdf/example_pdf.pdf";
-          
-        },
-      },{id: "post-a-post-with-diagrams",
-        
-          title: "a post with diagrams",
-        
-        description: "an example of a blog post with diagrams",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2021/diagrams/";
-          
-        },
-      },{id: "post-a-distill-style-blog-post",
-        
-          title: "a distill-style blog post",
-        
-        description: "an example of a distill-style blog post and main elements",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2021/distill/";
-          
-        },
-      },{id: "post-a-post-with-twitter",
-        
-          title: "a post with twitter",
-        
-        description: "an example of a blog post with twitter",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2020/twitter/";
-          
-        },
-      },{id: "post-a-post-with-disqus-comments",
-        
-          title: "a post with disqus comments",
-        
-        description: "an example of a blog post with disqus comments",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2015/disqus-comments/";
-          
-        },
-      },{id: "post-a-post-with-math",
-        
-          title: "a post with math",
-        
-        description: "an example of a blog post with some math",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2015/math/";
-          
-        },
-      },{id: "post-a-post-with-code",
-        
-          title: "a post with code",
-        
-        description: "an example of a blog post with some code",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2015/code/";
-          
-        },
-      },{id: "post-a-post-with-images",
-        
-          title: "a post with images",
-        
-        description: "this is what included images could look like",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2015/images/";
-          
-        },
-      },{id: "post-a-post-with-formatting-and-links",
-        
-          title: "a post with formatting and links",
-        
-        description: "march &amp; april, looking forward to summer",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/site-v2/blog/2015/formatting-and-links/";
+            window.location.href = "/site-v2/blog/2021/lecture/";
           
         },
       },{id: "books-the-godfather",
