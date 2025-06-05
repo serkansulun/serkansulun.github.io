@@ -13,6 +13,8 @@ nav_order: 2
 
 <!-- {% include bib_search.liquid %} -->
 
+[My Google Scholar page](https://scholar.google.com/citations?user=FehjYXEAAAAJ)
+
 <div class="publications">
 
 {% bibliography %}
