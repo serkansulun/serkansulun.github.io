@@ -1,7 +1,7 @@
 ---
-layout: redirect
+layout: none
 permalink: /cv/
-redirect_to: /assets/pdf/cv_serkan_sulun_photo.pdf
+# redirect_to: /assets/pdf/cv_serkan_sulun_photo.pdf
 title: cv
 nav: true
 nav_order: 5
@@ -10,3 +10,6 @@ nav_order: 5
 # toc:
 #   sidebar: left
 ---
+
+<meta http-equiv="refresh" content="0; url={{ "/assets/pdf/cv_serkan_sulun_photo.pdf" | relative_url }}" />
+
