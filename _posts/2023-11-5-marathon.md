@@ -15,6 +15,7 @@ To battle the boredom during training, I listened to [this Spotify playlist](htt
 I'd finally like to thank my friends for the support and the giant beer afterwards.
 
 <div style="display: flex; gap: 100px;">
-    <img src="/assets/img/blog/marathon/1.png" width="370">
-    <img src="/assets/img/blog/marathon/2.jpg" width="370">
+    <img src="{{ '/assets/img/blog/marathon/1.png' | relative_url }}" width="370">
+    <img src="{{ '/assets/img/blog/marathon/2.jpg' | relative_url }}" width="370">
 </div>
+

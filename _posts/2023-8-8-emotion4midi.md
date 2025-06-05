@@ -10,12 +10,13 @@ I additionally presented our paper "Emotion4MIDI: a Lyrics-based Emotion-Labeled
 
 <iframe width="900" height="510" src="https://www.youtube.com/embed/wBKE6dplHdE?si=f4grcPv8ZFzAc-UX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<img src="/assets/img/epia/epia.jpg" width="600">
+
+<img src="{{ '/assets/img/epia/epia.jpg' | relative_url }}" width="600">
 
 I also would like to thank the organizers of EPIA 2023 for the prize money, which I've already spent on swimming with the sharks in Azores:
 
-<img src="/assets/img/epia/shark.jpg" width="600">
+<img src="{{ '/assets/img/epia/shark.jpg' | relative_url }}" width="600">
 
-<img src="/assets/img/epia/shark1.jpg" width="600">
+<img src="{{ '/assets/img/epia/shark1.jpg' | relative_url }}" width="600">
 
-<img src="/assets/img/epia/shark2.jpg" width="600">
+<img src="{{ '/assets/img/epia/shark2.jpg' | relative_url }}" width="600">
