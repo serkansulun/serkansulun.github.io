@@ -80,7 +80,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2025/concert/";
+            window.location.href = "/site-v2/blog/concert/";
           
         },
       },{id: "post-submitted-my-thesis",
@@ -91,7 +91,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2025/thesis/";
+            window.location.href = "/site-v2/blog/thesis/";
           
         },
       },{id: "post-presented-at-ieee-ism-in-tokyo",
@@ -102,7 +102,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2024/ism/";
+            window.location.href = "/site-v2/blog/ism/";
           
         },
       },{id: "post-completed-42-km-porto-marathon",
@@ -113,7 +113,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2023/marathon/";
+            window.location.href = "/site-v2/blog/marathon/";
           
         },
       },{id: "post-best-presentation-award-at-epia-2023",
@@ -124,7 +124,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2023/emotion4midi/";
+            window.location.href = "/site-v2/blog/emotion4midi/";
           
         },
       },{id: "post-tv-interview-on-sic-notícias",
@@ -135,7 +135,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2022/sic/";
+            window.location.href = "/site-v2/blog/sic/";
           
         },
       },{id: "post-newspaper-interview-in-quot-observador-quot",
@@ -146,7 +146,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2022/observador/";
+            window.location.href = "/site-v2/blog/observador/";
           
         },
       },{id: "post-lecture-video-deep-learning-for-music-processing",
@@ -157,7 +157,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/2021/lecture/";
+            window.location.href = "/site-v2/blog/lecture/";
           
         },
       },{id: "books-the-godfather",
