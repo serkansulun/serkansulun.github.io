@@ -51,21 +51,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/site-v2/teaching/";
           },
-        },{id: "dropdown-bookshelf",
-              title: "bookshelf",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/site-v2/books/";
-              },
-            },{id: "dropdown-blog",
-              title: "blog",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/site-v2/blog/";
-              },
-            },{id: "post-upcoming-concert-on-17-may",
+        },{id: "post-upcoming-concert-on-17-may",
         
           title: "Upcoming concert on 17 May",
         
