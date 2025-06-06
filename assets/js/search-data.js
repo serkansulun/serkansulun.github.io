@@ -170,11 +170,11 @@ ninja.data = [{
           section: "Projects",handler: () => {
               window.location.href = "/vemoclap";
             },},{
-        id: 'social-email',
-        title: 'email',
+        id: 'social-scholar',
+        title: 'Google Scholar',
         section: 'Socials',
         handler: () => {
-          window.open("mailto:%6E%61%6D%65 %44%4F%54 %73%75%72%6E%61%6D%65 %41%54 %69%6E%65%73%63%74%65%63 %44%4F%54 %70%74", "_blank");
+          window.open("https://scholar.google.com/citations?user=FehjYXEAAAAJ", "_blank");
         },
       },{
         id: 'social-github',
@@ -184,11 +184,11 @@ ninja.data = [{
           window.open("https://github.com/serkansulun", "_blank");
         },
       },{
-        id: 'social-scholar',
-        title: 'Google Scholar',
+        id: 'social-email',
+        title: 'email',
         section: 'Socials',
         handler: () => {
-          window.open("https://scholar.google.com/citations?user=FehjYXEAAAAJ", "_blank");
+          window.open("mailto:%6E%61%6D%65 %44%4F%54 %73%75%72%6E%61%6D%65 %41%54 %69%6E%65%73%63%74%65%63 %44%4F%54 %70%74", "_blank");
         },
       },{
       id: 'light-theme',
