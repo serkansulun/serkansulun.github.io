@@ -7,49 +7,49 @@ ninja.data = [{
     title: "about",
     section: "Navigation",
     handler: () => {
-      window.location.href = "/site-v2/";
+      window.location.href = "/";
     },
   },{id: "nav-blog",
           title: "blog",
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/site-v2/blog/";
+            window.location.href = "/blog/";
           },
         },{id: "nav-publications",
           title: "publications",
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/site-v2/publications/";
+            window.location.href = "/publications/";
           },
         },{id: "nav-projects",
           title: "projects",
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/site-v2/projects/";
+            window.location.href = "/projects/";
           },
         },{id: "nav-repositories",
           title: "repositories",
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/site-v2/repositories/";
+            window.location.href = "/repositories/";
           },
         },{id: "nav-cv",
           title: "cv",
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/site-v2/cv/";
+            window.location.href = "/cv/";
           },
         },{id: "nav-teaching",
           title: "teaching",
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/site-v2/teaching/";
+            window.location.href = "/teaching/";
           },
         },{id: "post-upcoming-concert-on-17-may",
         
@@ -59,7 +59,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/concert/";
+            window.location.href = "/blog/concert/";
           
         },
       },{id: "post-submitted-my-thesis",
@@ -70,7 +70,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/thesis/";
+            window.location.href = "/blog/thesis/";
           
         },
       },{id: "post-presented-at-ieee-ism-in-tokyo",
@@ -81,7 +81,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/ism/";
+            window.location.href = "/blog/ism/";
           
         },
       },{id: "post-completed-42-km-porto-marathon",
@@ -92,7 +92,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/marathon/";
+            window.location.href = "/blog/marathon/";
           
         },
       },{id: "post-best-presentation-award-at-epia-2023",
@@ -103,7 +103,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/emotion4midi/";
+            window.location.href = "/blog/emotion4midi/";
           
         },
       },{id: "post-tv-interview-on-sic-notícias",
@@ -114,7 +114,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/sic/";
+            window.location.href = "/blog/sic/";
           
         },
       },{id: "post-newspaper-interview-in-quot-observador-quot",
@@ -125,7 +125,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/observador/";
+            window.location.href = "/blog/observador/";
           
         },
       },{id: "post-lecture-video-deep-learning-for-music-processing",
@@ -136,39 +136,39 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/site-v2/blog/lecture/";
+            window.location.href = "/blog/lecture/";
           
         },
       },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
           section: "Books",handler: () => {
-              window.location.href = "/site-v2/books/the_godfather/";
+              window.location.href = "/books/the_godfather/";
             },},{id: "projects-audio-bandwidth-extension",
           title: 'Audio bandwidth extension',
           description: "",
           section: "Projects",handler: () => {
-              window.location.href = "/site-v2/projects/bwe/";
+              window.location.href = "/projects/bwe/";
             },},{id: "projects-emotion-based-symbolic-music-generation",
           title: 'Emotion-based Symbolic Music Generation',
           description: "",
           section: "Projects",handler: () => {
-              window.location.href = "/site-v2/projects/emotion";
+              window.location.href = "/projects/emotion";
             },},{id: "projects-learned-frame-prediction-for-video-codecs",
           title: 'Learned frame prediction for video codecs',
           description: "",
           section: "Projects",handler: () => {
-              window.location.href = "/site-v2/projects/lfp/";
+              window.location.href = "/projects/lfp/";
             },},{id: "projects-video-based-symbolic-music-generation",
           title: 'Video-based Symbolic Music Generation',
           description: "",
           section: "Projects",handler: () => {
-              window.location.href = "/site-v2/projects/soundtrack/";
+              window.location.href = "/projects/soundtrack/";
             },},{id: "projects-multimodal-video-classification",
           title: 'Multimodal video classification',
           description: "",
           section: "Projects",handler: () => {
-              window.location.href = "/site-v2/vemoclap";
+              window.location.href = "/vemoclap";
             },},{
         id: 'social-email',
         title: 'email',
