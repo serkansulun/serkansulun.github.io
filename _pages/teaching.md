@@ -4,7 +4,7 @@ permalink: /teaching/
 title: teaching
 # description: Materials for courses you taught. Replace this text with your description.
 nav: true
-nav_order: 6
+nav_order: 5
 ---
 
 I have independently designed, prepared, and taught the following courses, including the development of all materials, exercises, and examinations.
