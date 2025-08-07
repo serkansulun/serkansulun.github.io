@@ -11,5 +11,5 @@ nav_order: 1
 #   sidebar: left
 ---
 
-<meta http-equiv="refresh" content="0; url={{ "/assets/pdf/cv_serkan_sulun_photo.pdf" | relative_url }}" />
+<meta http-equiv="refresh" content="0; url={{ "/assets/pdf/cv_serkan_sulun.pdf" | relative_url }}" />
 
