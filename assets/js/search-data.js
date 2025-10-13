@@ -148,17 +148,17 @@ ninja.data = [{
           title: 'Audio bandwidth extension',
           description: "",
           section: "Projects",handler: () => {
-              window.location.href = "/projects/bwe/";
+              window.location.href = "/bwe";
             },},{id: "projects-emotion-based-symbolic-music-generation",
           title: 'Emotion-based Symbolic Music Generation',
           description: "",
           section: "Projects",handler: () => {
-              window.location.href = "/projects/emotion";
+              window.location.href = "/midi";
             },},{id: "projects-learned-frame-prediction-for-video-codecs",
           title: 'Learned frame prediction for video codecs',
           description: "",
           section: "Projects",handler: () => {
-              window.location.href = "/projects/lfp/";
+              window.location.href = "/lfp/";
             },},{id: "projects-video-based-symbolic-music-generation",
           title: 'Video-based Symbolic Music Generation',
           description: "",
