@@ -6,7 +6,7 @@ img: assets/img/proj/lfp.jpg
 importance: 4
 category: work
 related_publications: true
-permalink: /projects/lfp/
+permalink: /lfp/
 ---
 
 Standard video codecs use a "motion compensation" module to predict the next frame. This way, rather than encoding video frames in their entirety, they only encode motion vectors that map blocks from the previous frame, alongside the residual image which is rather sparse.

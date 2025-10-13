@@ -6,7 +6,7 @@ img: assets/img/proj/midi.png
 importance: 2
 category: work
 related_publications: true
-permalink: /projects/emotion
+permalink: /midi
 ---
 
 While there are many symbolic music (MIDI) generators available, very few of them can be conditioned on high-level features such as emotions. Existing emotion-labeled MIDI datasets are limited, containing only a few thousand samples.

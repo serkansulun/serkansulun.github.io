@@ -6,7 +6,7 @@ img: assets/img/proj/bwe.png
 importance: 3
 category: work
 related_publications: true
-# giscus_comments: true
+permalink: /bwe
 ---
 
 My paper titled "On Filter Generalization for Music Bandwidth Extension Using Deep Neural Networks" is published on IEEE Journal of Selected Topics in Signal Processing {% cite sulunFilterGeneralizationMusic2020 %}. The supplementary material is presented at the bottom of this page.
