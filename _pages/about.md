@@ -28,8 +28,6 @@ latest_posts:
   limit: # leave blank to include all the blog posts
 ---
 
-**2025 Update**: I am currently seeking postdoctoral opportunities and research collaborations. Feel free to reach out at name DOT surname AT inesctec DOT pt
-
 I am a deep learning researcher with over a decade of experience, specializing in multimedia analysis and generation across various modalities, including video, image, audio, symbolic music, and text. During my PhD, I was awarded the prestigious la Caixa Doctoral Fellowship, the Doctoral Fellowship from the Portuguese Foundation for Science and Technology (FCT), and the Seed Projects Research Grant.
 
 For my PhD thesis, I created one of the only existing automatic soundtrack composer for arbitrary videos, achieving state-of-the-art results. Additionally, my video analysis models have set new benchmarks in datasets such as MovieNet and Ekman-6.
