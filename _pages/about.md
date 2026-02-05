@@ -34,4 +34,4 @@ For my PhD thesis, I created one of the only existing automatic soundtrack compo
 
 For my Master’s, I developed a novel deep learning-based video codec that replaced the traditional motion compensation mechanism, surpassing the widely used x264 codec. Beyond research, I have over 10 years of teaching experience and am the sole programming lecturer at the University of Porto and Porto Católica Business School.
 
-Outside academia, I have a deep passion for sports and the arts. After completing the 42 km. Porto Marathon, I retired from running (no one noticed) and took up tennis. With five years of radio broadcasting and a year of sound engineering experience, I later transitioned to playing the drums. I am currently a member of the Santa Cecilia Music School Rock Band.
+Outside academia, I have a deep passion for sports and the arts. After completing the 42 km. Porto Marathon, I retired from running (no one noticed) and took up tennis. With five years of radio broadcasting and a year of sound engineering experience, I later transitioned to playing the drums and played in the Santa Cecilia Music School Rock Band.
