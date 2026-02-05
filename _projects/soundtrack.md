@@ -16,4 +16,6 @@ In the video analysis stage, the model classifies the emotions of the video. For
 
 In my previous project, I developed an [emotion-based symbolic music generator]({{ "/projects/emotion/" | relative_url }}). The emotions extracted from the video drive music generator.
 
-Secondly, the music model generates musical boundaries in the form of long chords, near the video scene boundaries, while maintaining the rhythm and harmony. This is made possible by a novel mechanism that incorporates "boundary offsets" into the transformer architecture, enabling the model to anticipate upcoming boundaries. The relevant paper is in review {% cite soundtrack %}, and the code and the demo will be released soon.
+Secondly, the music model generates musical boundaries in the form of long chords, near the video scene boundaries, while maintaining the rhythm and harmony. This is made possible by a novel mechanism that incorporates "boundary offsets" into the transformer architecture, enabling the model to anticipate upcoming boundaries.
+
+The paper is available on [ArXiv](https://arxiv.org/abs/2502.10154) {% cite music %}. The source code is available on [Github](https://github.com/serkansulun/emsync). An online demo is available on [Colab](https://colab.research.google.com/drive/1hq6WmZztJk-yKp0UX1UTon8rJ3xC-bV6). Output samples with comparison to the state of the art is also [available](https://serkansulun.com/emsync).
