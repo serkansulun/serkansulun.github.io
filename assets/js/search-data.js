@@ -51,7 +51,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
-        },{id: "post-upcoming-concert-on-17-may",
+        },{id: "post-video-based-music-generation-and-thesis-defense",
+        
+          title: "Video-based music generation and thesis defense",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/thesis/";
+          
+        },
+      },{id: "post-upcoming-concert-on-17-may",
         
           title: "Upcoming concert on 17 May",
         
@@ -60,17 +71,6 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/concert/";
-          
-        },
-      },{id: "post-submitted-my-thesis",
-        
-          title: "Submitted my thesis",
-        
-        description: "",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/thesis/";
           
         },
       },{id: "post-presented-at-ieee-ism-in-tokyo",
@@ -188,7 +188,7 @@ ninja.data = [{
         title: 'email',
         section: 'Socials',
         handler: () => {
-          window.open("mailto:%6E%61%6D%65 %44%4F%54 %73%75%72%6E%61%6D%65 %41%54 %69%6E%65%73%63%74%65%63 %44%4F%54 %70%74", "_blank");
+          window.open("mailto:(%6E%61%6D%65)(%73%75%72%6E%61%6D%65 %77%69%74%68%6F%75%74 %76%6F%77%65%6C%73)(%41%54)(%67%6D%61%69%6C)(%44%4F%54)(%63%6F%6D)", "_blank");
         },
       },{
       id: 'light-theme',
