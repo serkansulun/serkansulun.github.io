@@ -6,8 +6,8 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Serkan
 # middle_name: R.
 last_name: Sulun
-contact_note: >
-  name DOT surname AT inesctec DOT pt
+# contact_note: >
+#   (name)(surname without vowels)(AT)(gmail)(DOT)(com)
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 # footer_text: >
