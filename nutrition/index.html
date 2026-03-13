@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nutrition Slider</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="title">Nutrition Slider</div>
+    <div class="targets">
+      <div class="targets-label">Targets:</div>
+      <label>Calories
+        <input id="target-cal" type="number" min="0" value="2000" />
+      </label>
+      <label>Protein (g)
+        <input id="target-pro" type="number" min="0" value="150" />
+      </label>
+      <label>Fiber (g)
+        <input id="target-fib" type="number" min="0" value="30" />
+      </label>
+      <label>Sat. Fat (g)
+        <input id="target-sat" type="number" min="0" value="20" />
+      </label>
+    </div>
+  </header>
+
+  <main class="content">
+    <section id="meal-1" class="meal-panel"></section>
+    <section id="meal-2" class="meal-panel"></section>
+    <section id="meal-3" class="meal-panel"></section>
+
+    <section class="day-totals">
+      <h2>Daily Totals</h2>
+      <div class="totals-grid">
+        <div class="row header">
+          <div></div>
+          <div>Calories</div>
+          <div>Protein (g)</div>
+          <div>Fiber (g)</div>
+          <div>Sat. Fat (g)</div>
+          <div>Price (€)</div>
+          <div>Price/Month</div>
+        </div>
+        <div class="row total">
+          <div>Total</div>
+          <div id="day-cal">0</div>
+          <div id="day-pro">0.0</div>
+          <div id="day-fib">0.0</div>
+          <div id="day-sat">0.0</div>
+          <div id="day-pri">€0.00</div>
+          <div id="day-pri-mo">€0.00</div>
+        </div>
+        <div class="row diff">
+          <div>vs Target</div>
+          <div id="diff-cal">—</div>
+          <div id="diff-pro">—</div>
+          <div id="diff-fib">—</div>
+          <div id="diff-sat">—</div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
