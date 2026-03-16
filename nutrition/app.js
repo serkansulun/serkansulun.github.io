@@ -40,8 +40,8 @@ function getMacros(name, amount) {
 }
 
 class MealPanel {
-  constructor(containerId, title, copySource = null, onChange) {
-    this.container = document.getElementById(containerId);
+  constructor(container, title, copySource = null, onChange) {
+    this.container = container;
     this.title = title;
     this.copySource = copySource;
     this.onChange = onChange;
@@ -141,13 +141,7 @@ class MealPanel {
 
     const nameTd = document.createElement("td");
     const select = document.createElement("select");
-    select.innerHTML = `<option value="">— add ingredient —</option>`;
-    Object.keys(INGREDIENTS).sort().forEach((name) => {
-      const opt = document.createElement("option");
-      opt.value = name;
-      opt.textContent = name;
-      select.appendChild(opt);
-    });
+    this._populateSelectOptions(select);
     nameTd.appendChild(select);
 
     const sliderTd = document.createElement("td");
@@ -200,13 +194,11 @@ class MealPanel {
       if (row.name) {
         this._showRowControls(row, true);
         this._updateRow(row);
-        if (this._isLastEmptyRow(row)) {
-          this._addEmptyRow();
-        }
       } else {
         this._showRowControls(row, false);
         this._updateRow(row);
       }
+      this._ensureTrailingEmptyRow();
       this._emitChange();
     });
 
@@ -215,6 +207,17 @@ class MealPanel {
 
     this._showRowControls(row, false);
     return row;
+  }
+
+  _populateSelectOptions(selectEl, selectedValue = "") {
+    selectEl.innerHTML = `<option value="">— add ingredient —</option>`;
+    Object.keys(INGREDIENTS).sort().forEach((name) => {
+      const opt = document.createElement("option");
+      opt.value = name;
+      opt.textContent = name;
+      selectEl.appendChild(opt);
+    });
+    selectEl.value = selectedValue;
   }
 
   _showRowControls(row, show) {
@@ -270,15 +273,26 @@ class MealPanel {
       this.rows.splice(idx, 1);
     }
 
-    if (this.rows.length === 0 || this.rows[this.rows.length - 1].name) {
-      this._addEmptyRow();
-    }
+    this._ensureTrailingEmptyRow();
 
     this._emitChange();
   }
 
-  _isLastEmptyRow(row) {
-    return this.rows.indexOf(row) === this.rows.length - 1 && !row.name;
+  _ensureTrailingEmptyRow() {
+    while (this.rows.length > 1) {
+      const last = this.rows[this.rows.length - 1];
+      const beforeLast = this.rows[this.rows.length - 2];
+      if (!last.name && !beforeLast.name) {
+        last.el.remove();
+        this.rows.pop();
+      } else {
+        break;
+      }
+    }
+
+    if (this.rows.length === 0 || this.rows[this.rows.length - 1].name) {
+      this._addEmptyRow();
+    }
   }
 
   _emitChange() {
@@ -322,6 +336,20 @@ class MealPanel {
     this._emitChange();
   }
 
+  refreshIngredientOptions() {
+    this.rows.forEach((row) => {
+      this._populateSelectOptions(row.select, row.name);
+      if (row.name && !INGREDIENTS[row.name]) {
+        row.name = "";
+        row.select.value = "";
+      }
+      this._showRowControls(row, Boolean(row.name));
+      this._updateRow(row);
+    });
+    this._ensureTrailingEmptyRow();
+    this._emitChange();
+  }
+
   copyFromSource() {
     if (!this.copySource) return;
     const state = this.copySource.getState();
@@ -330,9 +358,29 @@ class MealPanel {
 }
 
 function initApp() {
-  const meal1 = new MealPanel("meal-1", "Meal 1", null, updateDayTotals);
-  const meal2 = new MealPanel("meal-2", "Meal 2", meal1, updateDayTotals);
-  const meal3 = new MealPanel("meal-3", "Meal 3", meal1, updateDayTotals);
+  const mealsContainer = document.getElementById("meals-container");
+  const addMealBtn = document.getElementById("add-meal-btn");
+  const meals = [];
+
+  function createMeal() {
+    const mealIndex = meals.length + 1;
+    const mealSection = document.createElement("section");
+    mealSection.className = "meal-panel";
+    mealsContainer.appendChild(mealSection);
+
+    const firstMeal = meals[0] ?? null;
+    const copySource = mealIndex > 1 ? firstMeal : null;
+    const meal = new MealPanel(mealSection, `Meal ${mealIndex}`, copySource, updateDayTotals);
+    meals.push(meal);
+  }
+
+  createMeal();
+
+  const editorView = document.getElementById("data-editor-view");
+  const editBtn = document.getElementById("edit-data-btn");
+  const addRowBtn = document.getElementById("add-row-btn");
+  const saveBtn = document.getElementById("save-data-btn");
+  const tableBody = document.getElementById("data-table-body");
 
   const targets = {
     cal: document.getElementById("target-cal"),
@@ -355,7 +403,7 @@ function initApp() {
   };
 
   function updateDayTotals() {
-    const totals = [meal1, meal2, meal3].reduce((acc, meal) => {
+    const totals = meals.reduce((acc, meal) => {
       const t = meal.getTotals();
       acc.cal += t.cal;
       acc.pro += t.pro;
@@ -403,6 +451,97 @@ function initApp() {
   Object.values(targets).forEach((input) => {
     input.addEventListener("input", updateDayTotals);
   });
+
+  function toggleEditorView() {
+    const willOpen = editorView.classList.contains("hidden");
+    editorView.classList.toggle("hidden", !willOpen);
+    if (willOpen) {
+      renderDataTable();
+    }
+  }
+
+  function createCellInput(value, type = "number") {
+    const input = document.createElement("input");
+    input.type = type;
+    input.value = value;
+    return input;
+  }
+
+  function createDataRow(name = "", data = {}) {
+    const tr = document.createElement("tr");
+    const nameTd = document.createElement("td");
+    const calTd = document.createElement("td");
+    const proTd = document.createElement("td");
+    const fibTd = document.createElement("td");
+    const satTd = document.createElement("td");
+    const amtTd = document.createElement("td");
+    const priTd = document.createElement("td");
+    const delTd = document.createElement("td");
+
+    const nameInput = createCellInput(name, "text");
+    nameTd.appendChild(nameInput);
+    calTd.appendChild(createCellInput(data.calorie ?? ""));
+    proTd.appendChild(createCellInput(data.protein ?? ""));
+    fibTd.appendChild(createCellInput(data.fiber ?? ""));
+    satTd.appendChild(createCellInput(data.sat_fat ?? ""));
+    amtTd.appendChild(createCellInput(data.amount ?? ""));
+    priTd.appendChild(createCellInput(data.price ?? ""));
+
+    const delBtn = document.createElement("button");
+    delBtn.className = "delete-row";
+    delBtn.textContent = "X";
+    delBtn.addEventListener("click", () => tr.remove());
+    delTd.appendChild(delBtn);
+
+    tr.append(nameTd, calTd, proTd, fibTd, satTd, amtTd, priTd, delTd);
+    tableBody.appendChild(tr);
+  }
+
+  function renderDataTable() {
+    tableBody.innerHTML = "";
+    Object.keys(INGREDIENTS).sort().forEach((name) => {
+      createDataRow(name, INGREDIENTS[name]);
+    });
+  }
+
+  function applyDataChanges() {
+    const updated = {};
+    Array.from(tableBody.querySelectorAll("tr")).forEach((tr) => {
+      const inputs = Array.from(tr.querySelectorAll("input"));
+      const [nameInput, calInput, proInput, fibInput, satInput, amtInput, priInput] = inputs;
+      const name = nameInput.value.trim();
+      if (!name) return;
+
+      const calorie = Number(calInput.value);
+      const protein = Number(proInput.value);
+      const fiber = Number(fibInput.value);
+      const sat_fat = Number(satInput.value);
+      const amount = Number(amtInput.value);
+      const price = Number(priInput.value);
+
+      if ([calorie, protein, fiber, sat_fat, amount, price].some((v) => Number.isNaN(v))) {
+        return;
+      }
+
+      updated[name] = { calorie, protein, fiber, sat_fat, amount, price };
+    });
+
+    Object.keys(INGREDIENTS).forEach((key) => delete INGREDIENTS[key]);
+    Object.assign(INGREDIENTS, updated);
+
+    meals.forEach((meal) => meal.refreshIngredientOptions());
+    updateDayTotals();
+  }
+
+  editBtn.addEventListener("click", toggleEditorView);
+  saveBtn.addEventListener("click", applyDataChanges);
+  addRowBtn.addEventListener("click", () => {
+    if (editorView.classList.contains("hidden")) {
+      toggleEditorView();
+    }
+    createDataRow("", {});
+  });
+  addMealBtn.addEventListener("click", createMeal);
 
   updateDayTotals();
 }
