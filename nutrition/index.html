@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nutrition Slider</title>
+  <link rel="icon" type="image/png" href="icon.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -27,9 +28,14 @@
   </header>
 
   <main class="content">
-    <section id="meal-1" class="meal-panel"></section>
-    <section id="meal-2" class="meal-panel"></section>
-    <section id="meal-3" class="meal-panel"></section>
+    <section class="intro-note">
+      This is a nutrition planner, not a tracker. It helps you visualize what a perfect day of eating might look like. <br><br>Just set your macro targets from the upper right, and add your meals and ingredients from below.<br><br>Using the sliders, you can fine-tune the amounts to hit multiple macro targets. You can also edit the food database.<br><br>
+    </section>
+
+    <div id="meals-container"></div>
+    <div class="add-meal-wrap">
+      <button id="add-meal-btn" class="secondary-btn" type="button">Add meal</button>
+    </div>
 
     <section class="day-totals">
       <h2>Daily Totals</h2>
@@ -64,6 +70,31 @@
       </div>
     </section>
   </main>
+
+  <section id="data-editor" class="data-editor">
+    <div class="data-editor-actions">
+      <button id="edit-data-btn" class="primary-btn" type="button">Edit database</button>
+      <button id="add-row-btn" class="secondary-btn" type="button">Add row</button>
+      <button id="save-data-btn" class="primary-btn" type="button">Apply Changes</button>
+    </div>
+    <div id="data-editor-view" class="hidden">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Ingredient</th>
+            <th>Calories</th>
+            <th>Protein</th>
+            <th>Fiber</th>
+            <th>Sat. Fat</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="data-table-body"></tbody>
+      </table>
+    </div>
+  </section>
 
   <script src="data.js"></script>
   <script src="app.js"></script>
