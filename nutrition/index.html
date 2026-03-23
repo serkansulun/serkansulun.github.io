@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <header class="top-bar">
     <div class="title">Nutrition Slider</div>
@@ -18,57 +20,99 @@
       <label>Protein (g)
         <input id="target-pro" type="number" min="0" value="150" />
       </label>
-      <label>Fiber (g)
-        <input id="target-fib" type="number" min="0" value="30" />
+      <label>Fat (g)
+        <input id="target-fat" type="number" min="0" value="70" />
       </label>
       <label>Sat. Fat (g)
         <input id="target-sat" type="number" min="0" value="20" />
+      </label>
+      <label>Carbs (g)
+        <input id="target-carb" type="number" min="0" value="250" />
+      </label>
+      <label>Sugar (g)
+        <input id="target-sug" type="number" min="0" value="50" />
+      </label>
+      <label>Salt (g)
+        <input id="target-sal" type="number" min="0" step="0.1" value="6" />
+      </label>
+      <label>Fiber (g)
+        <input id="target-fib" type="number" min="0" value="30" />
+      </label>
+      <label>In. fiber (g)
+        <input id="target-ifib" type="number" min="0" value="20" />
       </label>
     </div>
   </header>
 
   <main class="content">
     <section class="intro-note">
-      This is a nutrition planner, not a tracker. It helps you visualize what a perfect day of eating might look like. <br><br>Just set your macro targets from the upper right, and add your meals and ingredients from below.<br><br>Using the sliders, you can fine-tune the amounts to hit multiple macro targets. You can also edit the food database.<br><br>
+      This is a nutrition planner, not a tracker. It helps you visualize what a perfect day of eating might look like.
+      <br><br>Just set your macro targets from the upper right, and add your meals and ingredients from
+      below.<br><br>Using the sliders, you can fine-tune the amounts to hit multiple macro targets. You can also edit
+      the food database.<br><br>
     </section>
 
-    <div id="meals-container"></div>
-    <div class="add-meal-wrap">
-      <button id="add-meal-btn" class="secondary-btn" type="button">Add meal</button>
+    <div class="planner-layout">
+      <section class="planner-main">
+        <div id="meals-container"></div>
+        <div class="add-meal-wrap">
+          <button id="add-meal-btn" class="secondary-btn" type="button">Add meal</button>
+        </div>
+      </section>
+
+      <aside class="day-totals">
+        <h2>Daily Totals</h2>
+        <div class="totals-vertical">
+          <div></div>
+          <div class="tv-head">Total</div>
+          <div class="tv-head">Target</div>
+
+          <div class="tv-label">Calories</div>
+          <div id="day-cal" class="tv-value tv-total">0</div>
+          <div id="target-cal-view" class="tv-value tv-target">0</div>
+
+          <div class="tv-label">Protein (g)</div>
+          <div id="day-pro" class="tv-value tv-total">0.0</div>
+          <div id="target-pro-view" class="tv-value tv-target">0.0</div>
+
+          <div class="tv-label">Fat (g)</div>
+          <div id="day-fat" class="tv-value tv-total">0.0</div>
+          <div id="target-fat-view" class="tv-value tv-target">0.0</div>
+
+          <div class="tv-label">Sat. Fat (g)</div>
+          <div id="day-sat" class="tv-value tv-total">0.0</div>
+          <div id="target-sat-view" class="tv-value tv-target">0.0</div>
+
+          <div class="tv-label">Carbs (g)</div>
+          <div id="day-carb" class="tv-value tv-total">0.0</div>
+          <div id="target-carb-view" class="tv-value tv-target">0.0</div>
+
+          <div class="tv-label">Sugar (g)</div>
+          <div id="day-sug" class="tv-value tv-total">0.0</div>
+          <div id="target-sug-view" class="tv-value tv-target">0.0</div>
+
+          <div class="tv-label">Salt (g)</div>
+          <div id="day-sal" class="tv-value tv-total">0.0</div>
+          <div id="target-sal-view" class="tv-value tv-target">0.0</div>
+
+          <div class="tv-label">Fiber (g)</div>
+          <div id="day-fib" class="tv-value tv-total">0.0</div>
+          <div id="target-fib-view" class="tv-value tv-target">0.0</div>
+
+          <div class="tv-label">In. fiber (g)</div>
+          <div id="day-ifib" class="tv-value tv-total">0.0</div>
+          <div id="target-ifib-view" class="tv-value tv-target">0.0</div>
+
+          <div class="tv-label">Price (€)</div>
+          <div id="day-pri" class="tv-value tv-total">€0.00</div>
+          <div class="tv-value tv-target">—</div>
+
+          <div class="tv-label">Price/Month</div>
+          <div id="day-pri-mo" class="tv-value tv-total">€0.00/mo</div>
+          <div class="tv-value tv-target">—</div>
+        </div>
+      </aside>
     </div>
-
-    <section class="day-totals">
-      <h2>Daily Totals</h2>
-      <div class="totals-grid">
-        <div class="row header">
-          <div></div>
-          <div>Calories</div>
-          <div>Protein (g)</div>
-          <div>Fiber (g)</div>
-          <div>Sat. Fat (g)</div>
-          <div>Price (€)</div>
-          <div>Price/Month</div>
-        </div>
-        <div class="row total">
-          <div>Total</div>
-          <div id="day-cal">0</div>
-          <div id="day-pro">0.0</div>
-          <div id="day-fib">0.0</div>
-          <div id="day-sat">0.0</div>
-          <div id="day-pri">€0.00</div>
-          <div id="day-pri-mo">€0.00</div>
-        </div>
-        <div class="row diff">
-          <div>vs Target</div>
-          <div id="diff-cal">—</div>
-          <div id="diff-pro">—</div>
-          <div id="diff-fib">—</div>
-          <div id="diff-sat">—</div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <section id="data-editor" class="data-editor">
@@ -86,6 +130,7 @@
             <th>Protein</th>
             <th>Fiber</th>
             <th>Sat. Fat</th>
+            <th>Ref. Weight (g)</th>
             <th>Amount</th>
             <th>Price</th>
             <th></th>
@@ -94,9 +139,20 @@
         <tbody id="data-table-body"></tbody>
       </table>
     </div>
+
+    <div class="import-export-wrap">
+      <button id="import-export-btn" class="secondary-btn" type="button">Import/Export</button>
+      <div id="import-export-view" class="hidden import-export-view">
+        <textarea id="state-json" rows="12" spellcheck="false"></textarea>
+        <div class="import-export-actions">
+          <button id="load-state-btn" class="primary-btn" type="button">Load from text</button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
+
 </html>

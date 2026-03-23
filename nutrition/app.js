@@ -4,7 +4,7 @@ const format = {
   kcal: (v) => `${v.toFixed(0)} kcal`,
   grams: (v) => `${v.toFixed(1)} g`,
   euros: (v) => `€${v.toFixed(2)}`,
-  eurosMonth: (v) => `€${(v * 30).toFixed(2)}/mo`
+  eurosMonth: (v) => `€${(v * 30).toFixed(2)}`
 };
 
 function diffColor(diff, excessBad) {
@@ -29,14 +29,21 @@ function diffColor(diff, excessBad) {
 
 function getMacros(name, amount) {
   const data = INGREDIENTS[name];
-  if (!data) return { cal: 0, pro: 0, fib: 0, sat: 0, pri: 0 };
-  const cal = data.calorie * amount / 100;
-  const pro = data.protein * amount / 100;
-  const fib = data.fiber * amount / 100;
-  const sat = data.sat_fat * amount / 100;
-  const unitPrice = data.price / data.amount;
+  if (!data) return { cal: 0, pro: 0, fat: 0, sat: 0, carb: 0, sug: 0, sal: 0, fib: 0, ifib: 0, pri: 0 };
+  const referenceWeight = data.reference_weight ?? 100;
+  const saleWeight = data.amount;
+  const cal = data.calorie * amount / referenceWeight;
+  const pro = data.protein * amount / referenceWeight;
+  const fat = (data.total_fat ?? 0) * amount / referenceWeight;
+  const fib = data.fiber * amount / referenceWeight;
+  const ifib = (data.insoluble_fiber ?? 0) * amount / referenceWeight;
+  const sat = data.sat_fat * amount / referenceWeight;
+  const carb = (data.total_carb ?? 0) * amount / referenceWeight;
+  const sug = (data.sugars ?? 0) * amount / referenceWeight;
+  const sal = (data.salt ?? 0) * amount / referenceWeight;
+  const unitPrice = data.price / saleWeight;
   const pri = unitPrice * amount;
-  return { cal, pro, fib, sat, pri };
+  return { cal, pro, fat, sat, carb, sug, sal, fib, ifib, pri };
 }
 
 class MealPanel {
@@ -46,6 +53,8 @@ class MealPanel {
     this.copySource = copySource;
     this.onChange = onChange;
     this.rows = [];
+    this.isTied = false;
+    this.tieBtn = null;
 
     this._build();
     this._addEmptyRow();
@@ -61,11 +70,11 @@ class MealPanel {
     header.innerHTML = `<h2>${this.title}</h2>`;
 
     if (this.copySource) {
-      const copyBtn = document.createElement("button");
-      copyBtn.className = "copy-btn";
-      copyBtn.textContent = "Copy from Meal 1";
-      copyBtn.addEventListener("click", () => this.copyFromSource());
-      header.appendChild(copyBtn);
+      this.tieBtn = document.createElement("button");
+      this.tieBtn.className = "copy-btn";
+      this._updateTieButtonLabel();
+      this.tieBtn.addEventListener("click", () => this.toggleTie());
+      header.appendChild(this.tieBtn);
     }
 
     this.container.appendChild(header);
@@ -297,27 +306,32 @@ class MealPanel {
 
   _emitChange() {
     this._renderTotals();
-    if (this.onChange) this.onChange();
+    if (this.onChange) this.onChange(this);
   }
 
   getTotals() {
     return this.rows.reduce((acc, row) => {
       if (!row.name) return acc;
-      const { cal, pro, fib, sat, pri } = getMacros(row.name, row.amount);
+      const { cal, pro, fat, sat, carb, sug, sal, fib, ifib, pri } = getMacros(row.name, row.amount);
       acc.cal += cal;
       acc.pro += pro;
+      acc.fat += fat;
+      acc.carb += carb;
+      acc.sug += sug;
+      acc.sal += sal;
       acc.fib += fib;
+      acc.ifib += ifib;
       acc.sat += sat;
       acc.pri += pri;
       return acc;
-    }, { cal: 0, pro: 0, fib: 0, sat: 0, pri: 0 });
+    }, { cal: 0, pro: 0, fat: 0, sat: 0, carb: 0, sug: 0, sal: 0, fib: 0, ifib: 0, pri: 0 });
   }
 
   getState() {
     return this.rows.filter((row) => row.name).map((row) => ({ name: row.name, amount: row.amount }));
   }
 
-  loadState(state) {
+  loadState(state, { silent = false } = {}) {
     this.rows.forEach((row) => row.el.remove());
     this.rows = [];
     state.forEach((item) => {
@@ -333,6 +347,10 @@ class MealPanel {
       this.tbody.appendChild(row.el);
     });
     this._addEmptyRow();
+    if (silent) {
+      this._renderTotals();
+      return;
+    }
     this._emitChange();
   }
 
@@ -350,10 +368,29 @@ class MealPanel {
     this._emitChange();
   }
 
-  copyFromSource() {
+  _updateTieButtonLabel() {
+    if (!this.tieBtn || !this.copySource) return;
+    if (this.isTied) {
+      this.tieBtn.textContent = "Untie";
+      return;
+    }
+    this.tieBtn.textContent = `Tie to ${this.copySource.title}`;
+  }
+
+  toggleTie() {
     if (!this.copySource) return;
-    const state = this.copySource.getState();
-    this.loadState(state);
+    this.isTied = !this.isTied;
+    this._updateTieButtonLabel();
+    if (this.isTied) {
+      const state = this.copySource.getState();
+      this.loadState(state);
+      return;
+    }
+    this._emitChange();
+  }
+
+  isTiedToSource() {
+    return Boolean(this.copySource) && this.isTied;
   }
 }
 
@@ -361,8 +398,35 @@ function initApp() {
   const mealsContainer = document.getElementById("meals-container");
   const addMealBtn = document.getElementById("add-meal-btn");
   const meals = [];
+  let isSyncingTiedMeals = false;
 
-  function createMeal() {
+  function syncTiedMeals(changedMeal = null) {
+    if (isSyncingTiedMeals) return;
+    const firstMeal = meals[0];
+    if (!firstMeal) return;
+
+    const tiedMeals = meals.filter((meal, index) => index > 0 && meal.isTiedToSource());
+    if (tiedMeals.length === 0) return;
+
+    isSyncingTiedMeals = true;
+    try {
+      const changedIsTiedMeal = Boolean(changedMeal) && changedMeal !== firstMeal && changedMeal.isTiedToSource();
+
+      if (changedIsTiedMeal) {
+        firstMeal.loadState(changedMeal.getState(), { silent: true });
+      }
+
+      const sourceState = firstMeal.getState();
+      tiedMeals.forEach((meal) => {
+        if (meal === changedMeal && changedIsTiedMeal) return;
+        meal.loadState(sourceState, { silent: true });
+      });
+    } finally {
+      isSyncingTiedMeals = false;
+    }
+  }
+
+  function createMeal(initialState = null) {
     const mealIndex = meals.length + 1;
     const mealSection = document.createElement("section");
     mealSection.className = "meal-panel";
@@ -370,8 +434,72 @@ function initApp() {
 
     const firstMeal = meals[0] ?? null;
     const copySource = mealIndex > 1 ? firstMeal : null;
-    const meal = new MealPanel(mealSection, `Meal ${mealIndex}`, copySource, updateDayTotals);
+    let meal;
+    meal = new MealPanel(mealSection, `Meal ${mealIndex}`, copySource, (changedMeal) => updateDayTotals(changedMeal));
+    if (initialState && Array.isArray(initialState)) {
+      meal.loadState(initialState, { silent: true });
+    }
     meals.push(meal);
+    return meal;
+  }
+
+  function clearMeals() {
+    meals.forEach((meal) => {
+      meal.container.remove();
+    });
+    meals.length = 0;
+  }
+
+  function buildPlannerState() {
+    return {
+      targets: {
+        cal: Number(targets.cal.value) || 0,
+        pro: Number(targets.pro.value) || 0,
+        fat: Number(targets.fat.value) || 0,
+        carb: Number(targets.carb.value) || 0,
+        sug: Number(targets.sug.value) || 0,
+        sal: Number(targets.sal.value) || 0,
+        fib: Number(targets.fib.value) || 0,
+        ifib: Number(targets.ifib.value) || 0,
+        sat: Number(targets.sat.value) || 0
+      },
+      meals: meals.map((meal) => meal.getState())
+    };
+  }
+
+  function loadPlannerState(state) {
+    if (!state || typeof state !== "object") return false;
+
+    const incomingTargets = state.targets ?? {};
+    const incomingMeals = Array.isArray(state.meals) ? state.meals : [];
+
+    targets.cal.value = String(Number(incomingTargets.cal) || 0);
+    targets.pro.value = String(Number(incomingTargets.pro) || 0);
+    targets.fat.value = String(Number(incomingTargets.fat) || 0);
+    targets.carb.value = String(Number(incomingTargets.carb) || 0);
+    targets.sug.value = String(Number(incomingTargets.sug) || 0);
+    targets.sal.value = String(Number(incomingTargets.sal) || 0);
+    targets.fib.value = String(Number(incomingTargets.fib) || 0);
+    targets.ifib.value = String(Number(incomingTargets.ifib) || 0);
+    targets.sat.value = String(Number(incomingTargets.sat) || 0);
+
+    clearMeals();
+
+    if (incomingMeals.length === 0) {
+      createMeal();
+    } else {
+      incomingMeals.forEach((mealState) => {
+        const validMealState = Array.isArray(mealState)
+          ? mealState
+            .filter((item) => item && typeof item.name === "string" && Number.isFinite(Number(item.amount)))
+            .map((item) => ({ name: item.name, amount: Number(item.amount) }))
+          : [];
+        createMeal(validMealState);
+      });
+    }
+
+    updateDayTotals();
+    return true;
   }
 
   createMeal();
@@ -381,68 +509,121 @@ function initApp() {
   const addRowBtn = document.getElementById("add-row-btn");
   const saveBtn = document.getElementById("save-data-btn");
   const tableBody = document.getElementById("data-table-body");
+  const importExportBtn = document.getElementById("import-export-btn");
+  const importExportView = document.getElementById("import-export-view");
+  const stateJson = document.getElementById("state-json");
+  const loadStateBtn = document.getElementById("load-state-btn");
 
   const targets = {
     cal: document.getElementById("target-cal"),
     pro: document.getElementById("target-pro"),
+    fat: document.getElementById("target-fat"),
     fib: document.getElementById("target-fib"),
-    sat: document.getElementById("target-sat")
+    sat: document.getElementById("target-sat"),
+    carb: document.getElementById("target-carb"),
+    sug: document.getElementById("target-sug"),
+    sal: document.getElementById("target-sal"),
+    ifib: document.getElementById("target-ifib")
   };
 
   const totalsEls = {
     cal: document.getElementById("day-cal"),
     pro: document.getElementById("day-pro"),
+    fat: document.getElementById("day-fat"),
     fib: document.getElementById("day-fib"),
+    ifib: document.getElementById("day-ifib"),
     sat: document.getElementById("day-sat"),
+    carb: document.getElementById("day-carb"),
+    sug: document.getElementById("day-sug"),
+    sal: document.getElementById("day-sal"),
     pri: document.getElementById("day-pri"),
     priMo: document.getElementById("day-pri-mo"),
-    diffCal: document.getElementById("diff-cal"),
-    diffPro: document.getElementById("diff-pro"),
-    diffFib: document.getElementById("diff-fib"),
-    diffSat: document.getElementById("diff-sat")
+    targetCal: document.getElementById("target-cal-view"),
+    targetPro: document.getElementById("target-pro-view"),
+    targetFat: document.getElementById("target-fat-view"),
+    targetFib: document.getElementById("target-fib-view"),
+    targetIfib: document.getElementById("target-ifib-view"),
+    targetSat: document.getElementById("target-sat-view"),
+    targetCarb: document.getElementById("target-carb-view"),
+    targetSug: document.getElementById("target-sug-view"),
+    targetSal: document.getElementById("target-sal-view")
   };
 
-  function updateDayTotals() {
+  function updateDayTotals(changedMeal = null) {
+    syncTiedMeals(changedMeal);
+
     const totals = meals.reduce((acc, meal) => {
       const t = meal.getTotals();
       acc.cal += t.cal;
       acc.pro += t.pro;
+      acc.fat += t.fat;
+      acc.carb += t.carb;
+      acc.sug += t.sug;
+      acc.sal += t.sal;
       acc.fib += t.fib;
+      acc.ifib += t.ifib;
       acc.sat += t.sat;
       acc.pri += t.pri;
       return acc;
-    }, { cal: 0, pro: 0, fib: 0, sat: 0, pri: 0 });
+    }, { cal: 0, pro: 0, fat: 0, sat: 0, carb: 0, sug: 0, sal: 0, fib: 0, ifib: 0, pri: 0 });
 
     totalsEls.cal.textContent = totals.cal.toFixed(0);
     totalsEls.pro.textContent = totals.pro.toFixed(1);
+    totalsEls.fat.textContent = totals.fat.toFixed(1);
     totalsEls.fib.textContent = totals.fib.toFixed(1);
+    totalsEls.ifib.textContent = totals.ifib.toFixed(1);
     totalsEls.sat.textContent = totals.sat.toFixed(1);
+    totalsEls.carb.textContent = totals.carb.toFixed(1);
+    totalsEls.sug.textContent = totals.sug.toFixed(1);
+    totalsEls.sal.textContent = totals.sal.toFixed(1);
     totalsEls.pri.textContent = format.euros(totals.pri);
     totalsEls.priMo.textContent = format.eurosMonth(totals.pri);
 
     const tgtCal = Number(targets.cal.value) || 0;
     const tgtPro = Number(targets.pro.value) || 0;
+    const tgtFat = Number(targets.fat.value) || 0;
+    const tgtCarb = Number(targets.carb.value) || 0;
+    const tgtSug = Number(targets.sug.value) || 0;
+    const tgtSal = Number(targets.sal.value) || 0;
     const tgtFib = Number(targets.fib.value) || 0;
+    const tgtIfib = Number(targets.ifib.value) || 0;
     const tgtSat = Number(targets.sat.value) || 0;
+
+    totalsEls.targetCal.textContent = tgtCal.toFixed(0);
+    totalsEls.targetPro.textContent = tgtPro.toFixed(1);
+    totalsEls.targetFat.textContent = tgtFat.toFixed(1);
+    totalsEls.targetFib.textContent = tgtFib.toFixed(1);
+    totalsEls.targetIfib.textContent = tgtIfib.toFixed(1);
+    totalsEls.targetSat.textContent = tgtSat.toFixed(1);
+    totalsEls.targetCarb.textContent = tgtCarb.toFixed(1);
+    totalsEls.targetSug.textContent = tgtSug.toFixed(1);
+    totalsEls.targetSal.textContent = tgtSal.toFixed(1);
 
     const diffs = {
       cal: totals.cal - tgtCal,
       pro: totals.pro - tgtPro,
+      fat: totals.fat - tgtFat,
+      carb: totals.carb - tgtCarb,
+      sug: totals.sug - tgtSug,
+      sal: totals.sal - tgtSal,
       fib: totals.fib - tgtFib,
+      ifib: totals.ifib - tgtIfib,
       sat: totals.sat - tgtSat
     };
 
-    const sign = (v) => (v >= 0 ? "+" : "");
-
-    const diffMap = [
-      { el: totalsEls.diffCal, diff: diffs.cal, excessBad: true, unit: " kcal" },
-      { el: totalsEls.diffPro, diff: diffs.pro, excessBad: false, unit: " g" },
-      { el: totalsEls.diffFib, diff: diffs.fib, excessBad: false, unit: " g" },
-      { el: totalsEls.diffSat, diff: diffs.sat, excessBad: true, unit: " g" }
+    const colorMap = [
+      { el: totalsEls.cal, diff: diffs.cal, excessBad: true },
+      { el: totalsEls.pro, diff: diffs.pro, excessBad: false },
+      { el: totalsEls.fat, diff: diffs.fat, excessBad: true },
+      { el: totalsEls.carb, diff: diffs.carb, excessBad: false },
+      { el: totalsEls.sug, diff: diffs.sug, excessBad: true },
+      { el: totalsEls.sal, diff: diffs.sal, excessBad: true },
+      { el: totalsEls.fib, diff: diffs.fib, excessBad: false },
+      { el: totalsEls.ifib, diff: diffs.ifib, excessBad: false },
+      { el: totalsEls.sat, diff: diffs.sat, excessBad: true }
     ];
 
-    diffMap.forEach(({ el, diff, excessBad, unit }) => {
-      el.textContent = `${sign(diff)}${diff.toFixed(1)}${unit}`;
+    colorMap.forEach(({ el, diff, excessBad }) => {
       el.style.backgroundColor = diffColor(diff, excessBad);
       el.style.color = "#111";
     });
@@ -460,6 +641,28 @@ function initApp() {
     }
   }
 
+  function toggleImportExportView() {
+    const willOpen = importExportView.classList.contains("hidden");
+    importExportView.classList.toggle("hidden", !willOpen);
+    if (willOpen) {
+      stateJson.value = JSON.stringify(buildPlannerState(), null, 2);
+    }
+  }
+
+  function applyImportedState() {
+    try {
+      const parsed = JSON.parse(stateJson.value);
+      const ok = loadPlannerState(parsed);
+      if (!ok) {
+        window.alert("Invalid state format.");
+        return;
+      }
+      stateJson.value = JSON.stringify(buildPlannerState(), null, 2);
+    } catch {
+      window.alert("Could not parse JSON.");
+    }
+  }
+
   function createCellInput(value, type = "number") {
     const input = document.createElement("input");
     input.type = type;
@@ -474,6 +677,7 @@ function initApp() {
     const proTd = document.createElement("td");
     const fibTd = document.createElement("td");
     const satTd = document.createElement("td");
+    const refTd = document.createElement("td");
     const amtTd = document.createElement("td");
     const priTd = document.createElement("td");
     const delTd = document.createElement("td");
@@ -484,6 +688,7 @@ function initApp() {
     proTd.appendChild(createCellInput(data.protein ?? ""));
     fibTd.appendChild(createCellInput(data.fiber ?? ""));
     satTd.appendChild(createCellInput(data.sat_fat ?? ""));
+    refTd.appendChild(createCellInput(data.reference_weight ?? 100));
     amtTd.appendChild(createCellInput(data.amount ?? ""));
     priTd.appendChild(createCellInput(data.price ?? ""));
 
@@ -493,7 +698,7 @@ function initApp() {
     delBtn.addEventListener("click", () => tr.remove());
     delTd.appendChild(delBtn);
 
-    tr.append(nameTd, calTd, proTd, fibTd, satTd, amtTd, priTd, delTd);
+    tr.append(nameTd, calTd, proTd, fibTd, satTd, refTd, amtTd, priTd, delTd);
     tableBody.appendChild(tr);
   }
 
@@ -508,7 +713,7 @@ function initApp() {
     const updated = {};
     Array.from(tableBody.querySelectorAll("tr")).forEach((tr) => {
       const inputs = Array.from(tr.querySelectorAll("input"));
-      const [nameInput, calInput, proInput, fibInput, satInput, amtInput, priInput] = inputs;
+      const [nameInput, calInput, proInput, fibInput, satInput, refInput, amtInput, priInput] = inputs;
       const name = nameInput.value.trim();
       if (!name) return;
 
@@ -516,14 +721,15 @@ function initApp() {
       const protein = Number(proInput.value);
       const fiber = Number(fibInput.value);
       const sat_fat = Number(satInput.value);
+      const reference_weight = Number(refInput.value);
       const amount = Number(amtInput.value);
       const price = Number(priInput.value);
 
-      if ([calorie, protein, fiber, sat_fat, amount, price].some((v) => Number.isNaN(v))) {
+      if ([calorie, protein, fiber, sat_fat, reference_weight, amount, price].some((v) => Number.isNaN(v))) {
         return;
       }
 
-      updated[name] = { calorie, protein, fiber, sat_fat, amount, price };
+      updated[name] = { calorie, protein, fiber, sat_fat, reference_weight, amount, price };
     });
 
     Object.keys(INGREDIENTS).forEach((key) => delete INGREDIENTS[key]);
@@ -535,6 +741,8 @@ function initApp() {
 
   editBtn.addEventListener("click", toggleEditorView);
   saveBtn.addEventListener("click", applyDataChanges);
+  importExportBtn.addEventListener("click", toggleImportExportView);
+  loadStateBtn.addEventListener("click", applyImportedState);
   addRowBtn.addEventListener("click", () => {
     if (editorView.classList.contains("hidden")) {
       toggleEditorView();
