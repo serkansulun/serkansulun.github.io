@@ -40,6 +40,7 @@ const INGREDIENTS = {
   "Salmon (Cooked)": {"calorie":208,"protein":20.0,"total_fat":13.0,"sat_fat":3.2,"total_carb":0.0,"sugars":0.0,"fiber":0.0,"insoluble_fiber":0,"salt":0.15,"reference_weight":80,"amount":320,"price":9.00},
   "Sardine (Canned Drained)": {"calorie":210,"protein":24.0,"total_fat":12.0,"sat_fat":3.0,"total_carb":0.0,"sugars":0.0,"fiber":0.0,"insoluble_fiber":0,"salt":0.85,"reference_weight":100,"amount":85,"price":0.95},
   "Seitan": {"calorie":121,"protein":22.1,"total_fat":1.9,"sat_fat":0.7,"total_carb":3.9,"sugars":0.0,"fiber":2.0,"insoluble_fiber":1.4,"salt":0.10,"reference_weight":100,"amount":250,"price":1.95},
+  "Soy (Granulated, texturized)": {"calorie":323,"protein":50.0,"total_fat":1.4,"sat_fat":0.3,"total_carb":19.0,"sugars":12.0,"fiber":17.0,"insoluble_fiber":12.8,"salt":0.08,"reference_weight":300,"amount":1200,"price":1.59},
   "Spinach (Cooked)": {"calorie":23,"protein":2.9,"total_fat":0.4,"sat_fat":0.1,"total_carb":3.6,"sugars":0.4,"fiber":2.2,"insoluble_fiber":1.8,"salt":0.20,"reference_weight":25,"amount":75,"price":1.99},
   "Strawberry": {"calorie":32,"protein":0.7,"total_fat":0.3,"sat_fat":0.0,"total_carb":7.7,"sugars":4.9,"fiber":2.0,"insoluble_fiber":1.5,"salt":0.01,"reference_weight":100,"amount":500,"price":3.00},
   "Sweet Potato (Boiled)": {"calorie":86,"protein":1.6,"total_fat":0.1,"sat_fat":0.0,"total_carb":20.0,"sugars":4.2,"fiber":3.0,"insoluble_fiber":2.1,"salt":0.13,"reference_weight":100,"amount":1000,"price":1.80},
