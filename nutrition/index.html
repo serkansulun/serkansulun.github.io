@@ -118,26 +118,13 @@
   <section id="data-editor" class="data-editor">
     <div class="data-editor-actions">
       <button id="edit-data-btn" class="primary-btn" type="button">Edit database</button>
-      <button id="add-row-btn" class="secondary-btn" type="button">Add row</button>
       <button id="save-data-btn" class="primary-btn" type="button">Apply Changes</button>
     </div>
     <div id="data-editor-view" class="hidden">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Ingredient</th>
-            <th>Calories</th>
-            <th>Protein</th>
-            <th>Fiber</th>
-            <th>Sat. Fat</th>
-            <th>Ref. Weight (g)</th>
-            <th>Amount</th>
-            <th>Price</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="data-table-body"></tbody>
-      </table>
+      <div class="json-editor-help">
+        Edit the ingredient database as JSON. The top-level value must be an object keyed by ingredient name.
+      </div>
+      <textarea id="data-json-editor" class="data-json-editor" rows="20" spellcheck="false"></textarea>
     </div>
 
     <div class="import-export-wrap">

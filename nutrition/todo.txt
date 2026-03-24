@@ -1,5 +1,3 @@
-change default target values
-
-page refreshes any time I edit todo.txt
-
 a weekend sheet
+
+can total amounts slide down with mouse scroll?

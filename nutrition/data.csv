@@ -1,24 +1,24 @@
 Food,Sale Price,Weight sold (gr),Reference Weight (gr),Calories,Protein,Saturated Fat,Fiber
-Black Beans (Canned Auchan),1.15,520,100,105,6.2,0.6,3.8
-Red Beans (Canned Auchan),1.15,520,100,90,6.9,0.1,7.4
-Butter Beans (Canned Auchan),1.15,520,100,95,6.6,0.1,7.9
-Chickpeas (Canned Auchan),1.15,520,100,118,7.1,0.3,6.7
-Almonds (Auchan),2.59,200,100,612,21.2,3.8,12.5
+Black Beans (Cooked),1.15,520,100,105,6.2,0.6,3.8
+Red Beans (Cooked),1.15,520,100,90,6.9,0.1,7.4
+Butter Beans (Cooked),1.15,520,100,95,6.6,0.1,7.9
+Chickpeas (Cooked),1.15,520,100,118,7.1,0.3,6.7
+Almonds,2.59,200,100,612,21.2,3.8,12.5
 Olive Oil (Auchan EVOO),4.30,750,100,824,0.0,14.4,0.0
-Packaged Spinach (Auchan),1.99,75,25,23,2.9,0.1,2.2
-Frozen Broccoli (Auchan),2.29,900,90,34,2.8,0.1,2.6
-Bulgur (Auchan),1.49,1500,300,342,12.3,0.2,18.3
-Quinoa (Auchan),2.99,1500,300,333,13.3,1.0,8.9
-Integral Rice (Auchan),1.48,2500,250,350,7.5,0.5,3.0
-Integral Pasta (Auchan),1.09,1200,240,348,13.0,0.5,8.0
-Peanut Butter (Auchan),3.95,500,100,630,26.0,6.8,7.2
-Oats (Auchan),1.50,3000,300,375,13.5,1.3,10.0
-Seitan (Auchan),1.95,250,100,121,22.1,0.7,2.0
-Tofu (Auchan),2.99,250,100,110,12.0,0.8,0.5
-Oranges (Auchan),4.95,5000,100,47,0.9,0.0,2.4
-Frozen Green Beans (Auchan),2.19,950,95,31,1.8,0.1,3.4
-Pumpkin Seeds (Auchan),1.89,150,100,559,30.2,8.7,6.0
-Fava Beans (Frozen Auchan),1.79,320,80,73,6.7,0.1,5.8
-Grana Padano Block (Auchan),3.59,200,100,398,33.0,18.0,0.0
-Walnuts Miolo (Auchan/Polegar),1.89,150,100,696,16.0,6.2,6.2
-Protein Powder (2kg Bulk),25.44,2000,100,433,88.0,2.8,0.0
+Packaged Spinach,1.99,75,25,23,2.9,0.1,2.2
+Frozen Broccoli,2.29,900,90,34,2.8,0.1,2.6
+Bulgur (Cooked),1.49,1500,300,342,12.3,0.2,18.3
+Quinoa (Cooked),2.99,1500,300,333,13.3,1.0,8.9
+Rice (Brown, cooked),1.48,2500,250,350,7.5,0.5,3.0
+Pasta (Brown, Cooked),1.09,1200,240,348,13.0,0.5,8.0
+Peanut Butter,3.95,500,100,630,26.0,6.8,7.2
+Oats,1.50,3000,300,375,13.5,1.3,10.0
+Seitan,1.95,250,100,121,22.1,0.7,2.0
+Tofu,2.99,250,100,110,12.0,0.8,0.5
+Oranges,4.95,5000,100,47,0.9,0.0,2.4
+Frozen Green Beans,2.19,950,95,31,1.8,0.1,3.4
+Pumpkin Seeds,1.89,150,100,559,30.2,8.7,6.0
+Fava Beans,1.79,320,80,73,6.7,0.1,5.8
+Grana Padano Block,3.59,200,100,398,33.0,18.0,0.0
+Walnuts,1.89,150,100,696,16.0,6.2,6.2
+Protein Powder (Rice),25.44,2000,100,433,88.0,2.8,0.0
