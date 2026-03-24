@@ -506,9 +506,8 @@ function initApp() {
 
   const editorView = document.getElementById("data-editor-view");
   const editBtn = document.getElementById("edit-data-btn");
-  const addRowBtn = document.getElementById("add-row-btn");
   const saveBtn = document.getElementById("save-data-btn");
-  const tableBody = document.getElementById("data-table-body");
+  const dataJsonEditor = document.getElementById("data-json-editor");
   const importExportBtn = document.getElementById("import-export-btn");
   const importExportView = document.getElementById("import-export-view");
   const stateJson = document.getElementById("state-json");
@@ -637,7 +636,7 @@ function initApp() {
     const willOpen = editorView.classList.contains("hidden");
     editorView.classList.toggle("hidden", !willOpen);
     if (willOpen) {
-      renderDataTable();
+      dataJsonEditor.value = JSON.stringify(INGREDIENTS, null, 2);
     }
   }
 
@@ -663,92 +662,62 @@ function initApp() {
     }
   }
 
-  function createCellInput(value, type = "number") {
-    const input = document.createElement("input");
-    input.type = type;
-    input.value = value;
-    return input;
-  }
-
-  function createDataRow(name = "", data = {}) {
-    const tr = document.createElement("tr");
-    const nameTd = document.createElement("td");
-    const calTd = document.createElement("td");
-    const proTd = document.createElement("td");
-    const fibTd = document.createElement("td");
-    const satTd = document.createElement("td");
-    const refTd = document.createElement("td");
-    const amtTd = document.createElement("td");
-    const priTd = document.createElement("td");
-    const delTd = document.createElement("td");
-
-    const nameInput = createCellInput(name, "text");
-    nameTd.appendChild(nameInput);
-    calTd.appendChild(createCellInput(data.calorie ?? ""));
-    proTd.appendChild(createCellInput(data.protein ?? ""));
-    fibTd.appendChild(createCellInput(data.fiber ?? ""));
-    satTd.appendChild(createCellInput(data.sat_fat ?? ""));
-    refTd.appendChild(createCellInput(data.reference_weight ?? 100));
-    amtTd.appendChild(createCellInput(data.amount ?? ""));
-    priTd.appendChild(createCellInput(data.price ?? ""));
-
-    const delBtn = document.createElement("button");
-    delBtn.className = "delete-row";
-    delBtn.textContent = "X";
-    delBtn.addEventListener("click", () => tr.remove());
-    delTd.appendChild(delBtn);
-
-    tr.append(nameTd, calTd, proTd, fibTd, satTd, refTd, amtTd, priTd, delTd);
-    tableBody.appendChild(tr);
-  }
-
-  function renderDataTable() {
-    tableBody.innerHTML = "";
-    Object.keys(INGREDIENTS).sort().forEach((name) => {
-      createDataRow(name, INGREDIENTS[name]);
-    });
-  }
-
   function applyDataChanges() {
+    let parsed;
+    try {
+      parsed = JSON.parse(dataJsonEditor.value);
+    } catch {
+      window.alert("Could not parse the database JSON.");
+      return;
+    }
+
+    if (!parsed || Array.isArray(parsed) || typeof parsed !== "object") {
+      window.alert("The database must be a JSON object keyed by ingredient name.");
+      return;
+    }
+
     const updated = {};
-    Array.from(tableBody.querySelectorAll("tr")).forEach((tr) => {
-      const inputs = Array.from(tr.querySelectorAll("input"));
-      const [nameInput, calInput, proInput, fibInput, satInput, refInput, amtInput, priInput] = inputs;
-      const name = nameInput.value.trim();
-      if (!name) return;
-
-      const calorie = Number(calInput.value);
-      const protein = Number(proInput.value);
-      const fiber = Number(fibInput.value);
-      const sat_fat = Number(satInput.value);
-      const reference_weight = Number(refInput.value);
-      const amount = Number(amtInput.value);
-      const price = Number(priInput.value);
-
-      if ([calorie, protein, fiber, sat_fat, reference_weight, amount, price].some((v) => Number.isNaN(v))) {
+    for (const [name, data] of Object.entries(parsed)) {
+      if (!name.trim() || !data || typeof data !== "object" || Array.isArray(data)) {
+        window.alert(`Invalid entry for ingredient: ${name}`);
         return;
       }
 
-      updated[name] = { calorie, protein, fiber, sat_fat, reference_weight, amount, price };
-    });
+      const normalized = {
+        calorie: Number(data.calorie),
+        protein: Number(data.protein),
+        total_fat: Number(data.total_fat ?? 0),
+        sat_fat: Number(data.sat_fat),
+        total_carb: Number(data.total_carb ?? 0),
+        sugars: Number(data.sugars ?? 0),
+        fiber: Number(data.fiber),
+        insoluble_fiber: Number(data.insoluble_fiber ?? 0),
+        salt: Number(data.salt ?? 0),
+        reference_weight: Number(data.reference_weight ?? 100),
+        amount: Number(data.amount ?? 100),
+        price: Number(data.price)
+      };
+
+      if (Object.values(normalized).some((value) => Number.isNaN(value))) {
+        window.alert(`Ingredient ${name} contains invalid numeric values.`);
+        return;
+      }
+
+      updated[name] = normalized;
+    }
 
     Object.keys(INGREDIENTS).forEach((key) => delete INGREDIENTS[key]);
     Object.assign(INGREDIENTS, updated);
 
     meals.forEach((meal) => meal.refreshIngredientOptions());
     updateDayTotals();
+    dataJsonEditor.value = JSON.stringify(INGREDIENTS, null, 2);
   }
 
   editBtn.addEventListener("click", toggleEditorView);
   saveBtn.addEventListener("click", applyDataChanges);
   importExportBtn.addEventListener("click", toggleImportExportView);
   loadStateBtn.addEventListener("click", applyImportedState);
-  addRowBtn.addEventListener("click", () => {
-    if (editorView.classList.contains("hidden")) {
-      toggleEditorView();
-    }
-    createDataRow("", {});
-  });
   addMealBtn.addEventListener("click", createMeal);
 
   updateDayTotals();

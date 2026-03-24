@@ -28,6 +28,9 @@ body {
   padding: 12px 18px;
   flex-wrap: wrap;
   gap: 12px;
+  max-width: 1200px;
+  margin: 12px auto 0;
+  border-radius: 8px;
 }
 
 .data-editor {
@@ -71,6 +74,24 @@ body {
   display: flex;
   justify-content: flex-end;
   margin-top: 8px;
+}
+
+.json-editor-help {
+  margin-bottom: 8px;
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.data-json-editor {
+  width: 100%;
+  min-height: 420px;
+  resize: vertical;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .title {
@@ -249,8 +270,11 @@ tfoot .totals {
   border-radius: 8px;
   padding: 14px 12px;
   align-self: start;
+  position: sticky;
+  top: 12px;
 }
 
+.data-editor-view,
 #data-editor-view {
   background: #fff;
   border: 1px solid #d7e0ea;
@@ -284,35 +308,6 @@ tfoot .totals {
 .primary-btn:disabled {
   background: #94a3b8;
   cursor: not-allowed;
-}
-
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-}
-
-.data-table th,
-.data-table td {
-  padding: 6px 8px;
-  border-bottom: 1px solid #e2e8f0;
-  text-align: left;
-}
-
-.data-table input {
-  width: 100%;
-  padding: 4px 6px;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
-}
-
-.data-table .delete-row {
-  background: #f7f7f7;
-  border: none;
-  border-radius: 4px;
-  color: #c0392b;
-  cursor: pointer;
-  font-weight: 700;
 }
 
 .hidden {
@@ -367,6 +362,7 @@ tfoot .totals {
 
   .day-totals {
     width: 100%;
+    position: static;
   }
 
   .meal-table th:nth-child(6),
